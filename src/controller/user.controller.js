@@ -87,9 +87,9 @@ export const recoveryUser = async (req, res) => {
       Logger.info(
         `La session actual expira a las ${expireHour} y son las ${actualHour}`
       );
-      return res.redirect("http://localhost:8080/expireSetPass");
+      return res.redirect("https://e-commercecoderhouse-production.up.railway.app/expireSetPass");
     }
-    res.redirect(`http://localhost:8080/changePass?uid=${id}`);
+    res.redirect(`https://e-commercecoderhouse-production.up.railway.app/changePass?uid=${id}`);
   } catch (error) {
     Logger.error("controller recoveryUser", error);
   }

@@ -1,7 +1,9 @@
+const url = process.env.URL_PRODUCTION;
+
+// Elementos del DOM
 const newPass = document.getElementById("newPass");
 const confirmPass = document.getElementById("confirmPass");
 const form = document.getElementById("setPass");
-// http://localhost:8080/changePass?uid=643f11527fdfa2d5557bd83a
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const params = window.location.search;
@@ -28,7 +30,7 @@ form.addEventListener("submit", (e) => {
       },
     }).showToast();
   }
-  fetch(`http://localhost:8080/api/auth/setNewPass/${uid}`, {
+  fetch(`${url}/api/auth/setNewPass/${uid}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +52,7 @@ form.addEventListener("submit", (e) => {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign("http://localhost:8080/");
+          window.location.assign(url);
         }, 1800);
       }
       if (data.status === "error") {

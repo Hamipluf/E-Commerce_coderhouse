@@ -1,6 +1,8 @@
+const url = process.env.URL_PRODUCTION;
+
 const navegation = document.getElementById("navegation");
 
-fetch("http://localhost:8080/api/auth/current", {
+fetch(`${url}/api/auth/current`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",

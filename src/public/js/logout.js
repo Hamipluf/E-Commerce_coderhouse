@@ -1,9 +1,11 @@
+const url = process.env.URL_PRODUCTION;
+
 const logOutBtn = document.getElementById("btn_logout");
 const cookies = document.cookie.firstName;
 logOutBtn.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("LOGOUT");
-  fetch("http://localhost:8080/api/auth/user/logout", {
+  fetch(`${url}/api/auth/user/logout`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +46,7 @@ logOutBtn.addEventListener("click", (e) => {
             background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
           },
         }).showToast();
-        location.assign("http://localhost:8080/");
+        location.assign(url);
       }
     })
     .catch((e) => console.log("*** ERROR ***", e));

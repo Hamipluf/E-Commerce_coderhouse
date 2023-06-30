@@ -1,3 +1,6 @@
+const url = process.env.URL_PRODUCTION;
+
+// Elementos del dom
 const productContainer = document.getElementById("productos");
 const ticketContainer = document.getElementById("ticket");
 const cardImg = document.getElementById("card_img");
@@ -12,7 +15,7 @@ const totalTicket = document.getElementById("total_compra");
 const volverAtras = document.getElementById("volver");
 const cartId = localStorage.getItem("cart_id");
 
-fetch(`http://localhost:8080/api/carts/${cartId}/purchase`)
+fetch(`${url}/api/carts/${cartId}/purchase`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -34,5 +37,5 @@ fetch(`http://localhost:8080/api/carts/${cartId}/purchase`)
   });
 
 volverAtras.addEventListener("click", () => {
-  window.location.href = "http://localhost:8080/home";
+  window.location.href = `${url}/home`;
 });

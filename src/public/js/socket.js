@@ -1,3 +1,4 @@
+const url = process.env.URL_PRODUCTION;
 const socket = io();
 
 // Elmentos DOM
@@ -45,7 +46,6 @@ socket.on("product.route:products", (products) => {
   listProducts.appendChild(li);
 });
 // Agrego un producto haciendo una peticion a mi ruta
-console.log();
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const ownerId = window.location.search.split("=")[1];

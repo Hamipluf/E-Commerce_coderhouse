@@ -2,6 +2,7 @@ import { transporter } from "../utils/nodeMailer.js";
 import Logger from "../utils/winston.js";
 import usersServices from "../services/users.services.js";
 import recoveryServices from "../services/recovery.services.js";
+const url = process.env.URL_PRODUCTION
 export const recoveryPassword = async (req, res) => {
   const { email } = req.body;
   try {
@@ -25,7 +26,7 @@ export const recoveryPassword = async (req, res) => {
         to: email,
         subject: "Cohder-E-Commerce Pass-Recovery",
         text: "Haga click en el link para poder recuperar la contraseña",
-        html: `<div><h1>Informacion de backend</h1><a href='http://localhost:8080/api/auth/recovery/${userId}'>Click para recuperar tu contraseña</a></div>`,
+        html: `<div><h1>Informacion de backend</h1><a href='${url}/api/auth/recovery/${userId}'>Click para recuperar tu contraseña</a></div>`,
       },
 
       (err, info) => {

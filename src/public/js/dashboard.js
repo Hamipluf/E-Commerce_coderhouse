@@ -1,3 +1,5 @@
+const url = process.env.URL_PRODUCTION;
+
 let premium = false;
 let user = false;
 let admin = false;
@@ -23,7 +25,7 @@ function changeRole(uid) {
     }).showToast();
   }
   if (admin) {
-    fetch(`http://localhost:8080/api/auth/premium/${uid}`, {
+    fetch(`${url}/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +36,6 @@ function changeRole(uid) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === "succses") {
           Toastify({
             text: data.message,
@@ -64,7 +65,7 @@ function changeRole(uid) {
       .catch((err) => console.log(err));
   }
   if (premium) {
-    fetch(`http://localhost:8080/api/auth/premium/${uid}`, {
+    fetch(`${url}/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,8 +76,6 @@ function changeRole(uid) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-
         if (data.status === "succses") {
           Toastify({
             text: data.message,
@@ -106,7 +105,7 @@ function changeRole(uid) {
       .catch((err) => console.log(err));
   }
   if (user) {
-    fetch(`http://localhost:8080/api/auth/premium/${uid}`, {
+    fetch(`${url}/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -117,8 +116,6 @@ function changeRole(uid) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-
         if (data.status === "succses") {
           Toastify({
             text: data.message,
@@ -171,7 +168,7 @@ function deleteUser(uid) {
       },
     }).showToast();
   }
-  fetch(`http://localhost:8080/api/auth/deleteUser/${uid}`, {
+  fetch(`${url}/api/auth/deleteUser/${uid}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

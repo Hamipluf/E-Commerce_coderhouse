@@ -1,4 +1,4 @@
-const url = "http://localhost:8080";
+const url = process.env.URL_PRODUCTION;
 
 //elementos
 const product = document.getElementById("products");
@@ -72,7 +72,7 @@ function agregar(pid) {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign("http://localhost:8080/home");
+          window.location.assign(`${url}home`);
         }, 1300);
       }
     })

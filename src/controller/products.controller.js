@@ -4,6 +4,8 @@ import UserManager from "../persistencia/DAOs/usersDAO/UsersMongo.js";
 import usersServices from "../services/users.services.js";
 import { transporter } from "../utils/nodeMailer.js";
 import Logger from "../utils/winston.js";
+const url = process.env.URL_PRODUCTION
+
 const manager = new ProductManager();
 const user = new UserManager();
 export const getAllProducts = async (req, res) => {
@@ -25,10 +27,10 @@ export const getAllProducts = async (req, res) => {
       hasPrevPage: products.hasPrevPage,
       hasNextPage: products.hasNextPage,
       prevLink: products.hasPrevPage
-        ? `http://localhost:8080/api/products?page=${products.prevPage}`
+        ? `${url}/api/products?page=${products.prevPage}`
         : null,
       nextLink: products.hasNextPage
-        ? `http://localhost:8080/api/products?page=${products.nextPage}`
+        ? `${url}/api/products?page=${products.nextPage}`
         : null,
     };
     res.status(200).json(resJson);

@@ -25,8 +25,8 @@ export const createCheckOut = async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: `http://localhost:8080/paymentSucces`,
-      cancel_url: `http://localhost:8080/paymentCanceled`,
+      success_url: `https://e-commercecoderhouse-production.up.railway.app/paymentSucces`,
+      cancel_url: `https://e-commercecoderhouse-production.up.railway.app/paymentCanceled`,
     });
     res.json({
       status: "succsess",

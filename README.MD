@@ -1,4 +1,3 @@
-
 # E-Commerce-Coderhouse
 
 Es un e-commerce hecho en Node.js y levantado con express, trabajo auth con passport y jwt, base de datos MongoDB.
@@ -12,8 +11,10 @@ Para inicializar el proyecto en local:
 
 --npm install
 
---Agregar las variables de entorno 
+--Agregar las variables de entorno
 
 Corre en el servidor http://localhost:8080/
 
---Documentacion en http://localhost:8080/apidocs
+--Documentacion en: https://e-commercecoderhouse-production.up.railway.app/apidocs
+
+--URL de produccion: https://e-commercecoderhouse-production.up.railway.app/

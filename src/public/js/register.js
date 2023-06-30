@@ -1,9 +1,6 @@
-// Elementos
-// const firstName = document.getElementById("firs_name");
-// const lastName = document.getElementById("last_name");
-// const email = document.getElementById("email");
-// const age = document.getElementById("age");
-// const password = document.getElementById("password");
+const url = process.env.URL_PRODUCTION;
+
+// Elementos del DOM
 const formRegister = document.getElementById("form_register");
 
 formRegister.addEventListener("submit", (e) => {
@@ -16,7 +13,7 @@ formRegister.addEventListener("submit", (e) => {
     email: e.target[3].value,
     password: e.target[4].value,
   };
-  fetch("http://localhost:8080/api/auth/register", {
+  fetch(`${url}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +21,6 @@ formRegister.addEventListener("submit", (e) => {
     body: JSON.stringify(user),
   })
     .then((res) => {
-      console.log(res);
       if (res.status === 400) {
         Toastify({
           text: "Faltan campos a rellenar",
@@ -59,7 +55,7 @@ formRegister.addEventListener("submit", (e) => {
             background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
           },
         }).showToast();
-        window.location.assign("http://localhost:8080/home");
+        window.location.assign(url);
       }
     })
     .catch((e) => console.log("*** ERROR ***", e));

@@ -1,10 +1,13 @@
+const url = process.env.URL_PRODUCTION;
+
+// Elementos del DOM
 const currentName = document.getElementById("first_name");
 const currentLastName = document.getElementById("last_name");
 const currentAge = document.getElementById("current_age");
 const currentEmail = document.getElementById("current_email");
 const userData = document.getElementById("user_data");
 const logout = document.getElementById("btn_logout");
-fetch("http://localhost:8080/api/auth/current", {
+fetch(`${url}/api/auth/current`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -28,7 +31,7 @@ fetch("http://localhost:8080/api/auth/current", {
   });
 
 logout.addEventListener("click", () => {
-  fetch("http://localhost:8080/api/auth/logout", {
+  fetch(`${url}/api/auth/logout`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -38,7 +41,7 @@ logout.addEventListener("click", () => {
     .then((data) => {
       if (data.status) {
         localStorage.clear();
-        window.location.href = "http://localhost:8080/";
+        window.location.href = url;
       }
       Toastify({
         text: "Error al salir de la session",

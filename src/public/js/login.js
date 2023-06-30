@@ -1,3 +1,5 @@
+const url = process.env.URL_PRODUCTION;
+
 // Elementos
 const email = document.getElementById("email_login");
 // const password = document.getElementById("password_login");
@@ -12,7 +14,7 @@ formLogin.addEventListener("submit", (e) => {
     email: e.target[0].value,
     password: e.target[1].value,
   };
-  fetch("http://localhost:8080/api/auth/login", {
+  fetch(`${url}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +46,7 @@ formLogin.addEventListener("submit", (e) => {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign("http://localhost:8080/home");
+          window.location.assign(`${url}/home`);
         }, 1800);
       }
     })
@@ -62,11 +64,11 @@ loginGithub.addEventListener("click", (e) => {
       background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
     },
   }).showToast();
-  location.assign("http://localhost:8080/api/auth/login/github");
+  location.assign(`${url}/api/auth/login/github`);
 });
 recovery.addEventListener("click", () => {
   try {
-    fetch("http://localhost:8080/api/mailer/recovery", {
+    fetch(`${url}/api/mailer/recovery`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +101,7 @@ recovery.addEventListener("click", () => {
             },
           }).showToast();
           setTimeout(() => {
-            window.location.assign("http://localhost:8080/recoveryPass");
+            window.location.assign(`${url}/recoveryPass`);
           }, 1800);
         }
       })
