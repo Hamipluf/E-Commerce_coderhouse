@@ -85,9 +85,10 @@ app.use("/loggerTest", testLoggerRoute);
 app.use("/api/payment", paymentRoute);
 app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
+const port = 8080 || process.env.PORT;
 // HTTP Server
-const httpServer = app.listen(8080, () => {
-  console.log("Escuchando al puerto", 8080);
+const httpServer = app.listen(port, () => {
+  console.log("Escuchando al puerto", port);
 });
 
 // Websocket server
