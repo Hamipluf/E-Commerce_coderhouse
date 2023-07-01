@@ -1,4 +1,3 @@
-const url = process.env.URL_PRODUCTION;
 const socket = io();
 
 // Elmentos DOM
@@ -60,7 +59,7 @@ form.addEventListener("submit", (e) => {
     thumbnail: e.target[7].value,
     owner: ownerId,
   };
-  fetch(`${url}/api/products`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/products`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -113,7 +112,7 @@ formDelete.addEventListener("submit", (e) => {
   // en caso de que me devuelva el res.status === 200 elimino el producto del dom y como ya se mando
   // la oeticion en la persistencia en archivo ya se modifico, en caso de que algo falle lanzo un error
   // para poder debuggear lo necesario
-  fetch(`${url}/api/products/${idToDelete}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/products/${idToDelete}`, {
     method: "DELETE",
     data: {
       uid: ownerId,
@@ -165,7 +164,7 @@ formDelete.addEventListener("submit", (e) => {
 formUdapted.addEventListener("submit", (e) => {
   e.preventDefault();
   const idToUdapted = e.target[0].value;
-  fetch(`${url}/api/products/${idToUdapted}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/products/${idToUdapted}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

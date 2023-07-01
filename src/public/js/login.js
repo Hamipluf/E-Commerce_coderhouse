@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos
 const email = document.getElementById("email_login");
 // const password = document.getElementById("password_login");
@@ -9,18 +7,20 @@ const recovery = document.getElementById("recovery");
 
 formLogin.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("LOGIN");
   const user = {
     email: e.target[0].value,
     password: e.target[1].value,
   };
-  fetch(`${url}/api/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  })
+  fetch(
+    `https://e-commercecoderhouse-production.up.railway.app/api/auth/login`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "Error") {
@@ -46,7 +46,7 @@ formLogin.addEventListener("submit", (e) => {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign(`${url}/home`);
+          window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/home`);
         }, 1800);
       }
     })
@@ -64,11 +64,11 @@ loginGithub.addEventListener("click", (e) => {
       background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
     },
   }).showToast();
-  location.assign(`${url}/api/auth/login/github`);
+  location.assign(`https://e-commercecoderhouse-production.up.railway.app/api/auth/login/github`);
 });
 recovery.addEventListener("click", () => {
   try {
-    fetch(`${url}/api/mailer/recovery`, {
+    fetch(`https://e-commercecoderhouse-production.up.railway.app/api/mailer/recovery`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

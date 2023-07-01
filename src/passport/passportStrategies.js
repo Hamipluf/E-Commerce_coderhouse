@@ -72,6 +72,7 @@ passport.use(
 const extactFromCookie = (req) => {
   let token = null;
   if (req && req.signedCookies) token = req.signedCookies["token"];
+  console.log(token);
   return token;
 };
 // Recupera los datos de jwt

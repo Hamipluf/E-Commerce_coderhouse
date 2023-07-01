@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 //elementos
 const product = document.getElementById("products");
 const addToCartBtn = document.getElementById("add_to_cart");
@@ -7,7 +5,7 @@ const addToCartBtn = document.getElementById("add_to_cart");
 // Datos del user
 const currentFirst = document.getElementById("current_first");
 const currentLast = document.getElementById("current_last");
-fetch(`${url}/api/auth/current`, {
+fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`, {
   headers: {
     "Content-Type": "application/json",
   },
@@ -27,7 +25,7 @@ function agregar(pid) {
 
   // si no existe el carrito en localStorage lo creo
   if (!cid) {
-    fetch(`${url}/api/carts/`, {
+    fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +39,7 @@ function agregar(pid) {
   }
   // si existe el carrito agrego el producto al carrito ya existente
   // El PID lo obtengo del template de la plantilla de handlebars
-  fetch(`${url}/api/carts/${cid}/product/${pid}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/${cid}/product/${pid}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +77,7 @@ function agregar(pid) {
     .catch((e) => console.error(e));
 }
 function seeOwner(pid) {
-  fetch(`${url}/api/products/${pid}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/products/${pid}`, {
     headers: {
       "Content-Type": "application/json",
     },

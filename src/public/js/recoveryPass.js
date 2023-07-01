@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos del DOM
 const newPass = document.getElementById("newPass");
 const confirmPass = document.getElementById("confirmPass");
@@ -30,15 +28,19 @@ form.addEventListener("submit", (e) => {
       },
     }).showToast();
   }
-  fetch(`${url}/api/auth/setNewPass/${uid}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      newPass: newPass.value,
-    }),
-  })
+  fetch(
+    `
+  https://e-commercecoderhouse-production.up.railway.app/api/auth/setNewPass/${uid}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        newPass: newPass.value,
+      }),
+    }
+  )
     .then((res) => res.json())
     .then((data) => {
       if (data.status === "Successful") {

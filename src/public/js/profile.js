@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos del DOM
 const currentName = document.getElementById("first_name");
 const currentLastName = document.getElementById("last_name");
@@ -7,7 +5,7 @@ const currentAge = document.getElementById("current_age");
 const currentEmail = document.getElementById("current_email");
 const userData = document.getElementById("user_data");
 const logout = document.getElementById("btn_logout");
-fetch(`${url}/api/auth/current`, {
+fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -31,7 +29,7 @@ fetch(`${url}/api/auth/current`, {
   });
 
 logout.addEventListener("click", () => {
-  fetch(`${url}/api/auth/logout`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/logout`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

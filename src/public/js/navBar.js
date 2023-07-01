@@ -2,7 +2,7 @@ const url = process.env.URL_PRODUCTION;
 
 const navegation = document.getElementById("navegation");
 
-fetch(`${url}/api/auth/current`, {
+fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
@@ -13,7 +13,7 @@ fetch(`${url}/api/auth/current`, {
     const cid = localStorage.getItem("cart_id");
     const uid = data.userResponse.id;
     if (!cid) {
-      fetch(`${url}/api/carts/`, {
+      fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

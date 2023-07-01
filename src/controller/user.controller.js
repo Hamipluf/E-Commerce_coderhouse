@@ -29,7 +29,6 @@ export const registerUser = (req, res) => {
 // Loguea un user ya creado
 export const loginUser = async (req, res) => {
   const user = req.user;
-
   try {
     const token = generateToken(user);
     res
@@ -87,9 +86,13 @@ export const recoveryUser = async (req, res) => {
       Logger.info(
         `La session actual expira a las ${expireHour} y son las ${actualHour}`
       );
-      return res.redirect("https://e-commercecoderhouse-production.up.railway.app/expireSetPass");
+      return res.redirect(
+        "https://e-commercecoderhouse-production.up.railway.app/expireSetPass"
+      );
     }
-    res.redirect(`https://e-commercecoderhouse-production.up.railway.app/changePass?uid=${id}`);
+    res.redirect(
+      `https://e-commercecoderhouse-production.up.railway.app/changePass?uid=${id}`
+    );
   } catch (error) {
     Logger.error("controller recoveryUser", error);
   }
@@ -220,12 +223,10 @@ export const deleteAnUser = async (req, res) => {
         message: `No se a podido eliminar el usuario con el ID:${uid}`,
       });
     }
-    res
-      .status(200)
-      .json({
-        status: "succses",
-        message: `Se elimino correctamente el user: ${userDeleted.email}`,
-      });
+    res.status(200).json({
+      status: "succses",
+      message: `Se elimino correctamente el user: ${userDeleted.email}`,
+    });
   } catch (error) {
     res.status(500).json({ error: "Error en el servidor" });
     Logger.error("Error en deleteAnUser controller", error);

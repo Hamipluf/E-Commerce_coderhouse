@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos del DOM
 const formRegister = document.getElementById("form_register");
 
@@ -13,7 +11,7 @@ formRegister.addEventListener("submit", (e) => {
     email: e.target[3].value,
     password: e.target[4].value,
   };
-  fetch(`${url}/api/auth/register`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

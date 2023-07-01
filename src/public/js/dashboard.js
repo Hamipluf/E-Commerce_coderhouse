@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 let premium = false;
 let user = false;
 let admin = false;
@@ -25,7 +23,7 @@ function changeRole(uid) {
     }).showToast();
   }
   if (admin) {
-    fetch(`${url}/api/auth/premium/${uid}`, {
+    fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +63,7 @@ function changeRole(uid) {
       .catch((err) => console.log(err));
   }
   if (premium) {
-    fetch(`${url}/api/auth/premium/${uid}`, {
+    fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +103,7 @@ function changeRole(uid) {
       .catch((err) => console.log(err));
   }
   if (user) {
-    fetch(`${url}/api/auth/premium/${uid}`, {
+    fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/premium/${uid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -168,7 +166,7 @@ function deleteUser(uid) {
       },
     }).showToast();
   }
-  fetch(`${url}/api/auth/deleteUser/${uid}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/deleteUser/${uid}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

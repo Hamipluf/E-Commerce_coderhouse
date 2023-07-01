@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos del dom
 const productContainer = document.getElementById("productos");
 const ticketContainer = document.getElementById("ticket");
@@ -15,7 +13,7 @@ const totalTicket = document.getElementById("total_compra");
 const volverAtras = document.getElementById("volver");
 const cartId = localStorage.getItem("cart_id");
 
-fetch(`${url}/api/carts/${cartId}/purchase`)
+fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/${cartId}/purchase`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -37,5 +35,5 @@ fetch(`${url}/api/carts/${cartId}/purchase`)
   });
 
 volverAtras.addEventListener("click", () => {
-  window.location.href = `${url}/home`;
+  window.location.href = `https://e-commercecoderhouse-production.up.railway.app/home`;
 });

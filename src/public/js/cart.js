@@ -1,5 +1,3 @@
-const url = process.env.URL_PRODUCTION;
-
 // Elementos del DOM
 const btnAddProduct = document.getElementById("btn-addProduct");
 const btnDeleteProduct = document.getElementById("btn-deleteProduct");
@@ -7,7 +5,7 @@ const btnDeleteProduct = document.getElementById("btn-deleteProduct");
 const cid = localStorage.getItem("cart_id");
 
 if (!cid) {
-  fetch(`${url}/api/carts/`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +20,7 @@ if (!cid) {
 }
 
 function addProduct(pid) {
-  fetch(`${url}/api/carts/${cid}/product/${pid}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/${cid}/product/${pid}`, {
     method: "POST",
   })
     .then((response) => response.json())
@@ -57,7 +55,7 @@ function addProduct(pid) {
 }
 
 function deleteProduct(pid) {
-  fetch(`${url}/api/carts/${cid}/products/${pid}`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/${cid}/products/${pid}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
@@ -91,10 +89,10 @@ function deleteProduct(pid) {
     .catch((err) => console.log(err));
 }
 function goToBuy() {
-  window.location.assign(`${url}home`);
+  window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/home`);
 }
 async function goToPay() {
-  await fetch(`${url}/api/carts/${cid}`)
+  await fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/${cid}`)
     .then((response) => response.json())
     .then((data) => {
       const products = data.data.cartById.products;
@@ -112,7 +110,7 @@ async function goToPay() {
     })
     .catch((err) => console.log(err));
 
-  await fetch(`${url}/api/payment/create-checkout-session`, {
+  await fetch(`https://e-commercecoderhouse-production.up.railway.app/api/payment/create-checkout-session`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

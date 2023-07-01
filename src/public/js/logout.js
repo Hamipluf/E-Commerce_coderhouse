@@ -4,8 +4,7 @@ const logOutBtn = document.getElementById("btn_logout");
 const cookies = document.cookie.firstName;
 logOutBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("LOGOUT");
-  fetch(`${url}/api/auth/user/logout`, {
+  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/user/logout`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
