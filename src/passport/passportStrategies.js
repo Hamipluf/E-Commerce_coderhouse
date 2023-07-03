@@ -4,6 +4,7 @@ import passport from "passport";
 import UserManager from "../persistencia/DAOs/usersDAO/UsersMongo.js";
 import { Strategy as LocalStrategy } from "passport-local";
 import { ExtractJwt, Strategy as jwtStrategy } from "passport-jwt";
+import { Strategy as GithubStrategy } from "passport-github2";
 import { hashData, compareData } from "../utils/bycrypt.js";
 import { userModel } from "../persistencia/mongoDB/models/user.model.js";
 
