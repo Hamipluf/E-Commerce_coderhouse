@@ -79,7 +79,7 @@ passport.use(
       clientID: client_id,
       clientSecret: client_secret,
       callbackURL:
-        "https://e-commercecoderhouse-production.up.railway.app/api/auth/github",
+        "https://e-commercecoderhouse-production.up.railway.app/api/auth/github/",
     },
     async (accessToken, refreshToken, profile, done) => {
       const userDB = await userModel.findOne({ email: profile._json.email });

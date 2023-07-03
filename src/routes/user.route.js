@@ -38,7 +38,6 @@ router.get(
   "/login/github",
   passport.authenticate("github", {
     scope: ["user:email"],
-    session: false,
   })
 );
 router.get(
