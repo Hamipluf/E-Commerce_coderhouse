@@ -3,8 +3,7 @@ const formRegister = document.getElementById("form_register");
 
 formRegister.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("AUTENTICANDO");
-  const user = {
+   const user = {
     first_name: e.target[0].value,
     last_name: e.target[1].value,
     age: e.target[2].value,
@@ -53,7 +52,7 @@ formRegister.addEventListener("submit", (e) => {
             background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
           },
         }).showToast();
-        window.location.assign(url);
+        window.location.assign("https://e-commercecoderhouse-production.up.railway.app/home");
       }
     })
     .catch((e) => console.log("*** ERROR ***", e));

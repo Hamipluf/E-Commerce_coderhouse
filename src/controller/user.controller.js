@@ -30,6 +30,12 @@ export const registerUser = (req, res) => {
 export const loginUser = async (req, res) => {
   const user = req.user;
   try {
+    if (!user) {
+      return res.status(400).json({
+        status: "error",
+        message: "Usuario no encontrado",
+      });
+    }
     const token = generateToken(user);
     res
       .cookie("token", token, {

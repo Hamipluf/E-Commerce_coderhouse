@@ -4,12 +4,15 @@ const logOutBtn = document.getElementById("btn_logout");
 const cookies = document.cookie.firstName;
 logOutBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/user/logout`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  fetch(
+    `https://e-commercecoderhouse-production.up.railway.app/api/auth/user/logout`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
     .then((res) => {
       if (res.status === 400) {
         Toastify({
@@ -45,7 +48,9 @@ logOutBtn.addEventListener("click", (e) => {
             background: "linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)",
           },
         }).showToast();
-        location.assign(url);
+        location.assign(
+          "https://e-commercecoderhouse-production.up.railway.app/"
+        );
       }
     })
     .catch((e) => console.log("*** ERROR ***", e));

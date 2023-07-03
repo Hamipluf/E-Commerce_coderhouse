@@ -70,7 +70,7 @@ function agregar(pid) {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign(`${url}home`);
+          window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/home`);
         }, 1300);
       }
     })

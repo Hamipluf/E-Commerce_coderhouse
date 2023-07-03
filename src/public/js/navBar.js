@@ -1,24 +1,28 @@
-const url = process.env.URL_PRODUCTION;
-
 const navegation = document.getElementById("navegation");
 
-fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
+fetch(
+  `https://e-commercecoderhouse-production.up.railway.app/api/auth/current`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+)
   .then((response) => response.json())
   .then((data) => {
     const cid = localStorage.getItem("cart_id");
     const uid = data.userResponse.id;
     if (!cid) {
-      fetch(`https://e-commercecoderhouse-production.up.railway.app/api/carts/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `https://e-commercecoderhouse-production.up.railway.app/api/carts/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           const cartId = data.cart._id;

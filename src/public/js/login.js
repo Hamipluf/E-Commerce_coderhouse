@@ -46,7 +46,7 @@ formLogin.addEventListener("submit", (e) => {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/home`);
+          window.location.assign(`http://localhost:8080/home`);
         }, 1800);
       }
     })
@@ -101,7 +101,7 @@ recovery.addEventListener("click", () => {
             },
           }).showToast();
           setTimeout(() => {
-            window.location.assign(`${url}/recoveryPass`);
+            window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/recoveryPass`);
           }, 1800);
         }
       })
