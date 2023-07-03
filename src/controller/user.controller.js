@@ -106,9 +106,9 @@ export const recoveryUser = async (req, res) => {
 export const logoutUser = async (req, res) => {
   try {
     if (!req.cookies) {
-      res.send({ message: "No se pudo salir de la session", status: false });
+      res.send({ message: "No se pudo salir de la session", status: "error" });
     }
-    res.clearCookie("token").send({ message: "Logout correcto", status: true });
+    res.clearCookie("token").send({ message: "Logout correcto", status: "succes" });
   } catch (error) {
     Logger.error("controller logoutUser", error);
   }

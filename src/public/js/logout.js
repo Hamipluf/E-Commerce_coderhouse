@@ -14,7 +14,7 @@ logOutBtn.addEventListener("click", (e) => {
     }
   )
     .then((res) => {
-      if (res.status === 400) {
+      if (res.status === 400 || "error") {
         Toastify({
           text: "Error en salir de la sesion",
           duration: 3000,
@@ -26,7 +26,7 @@ logOutBtn.addEventListener("click", (e) => {
         }).showToast();
       }
 
-      if (res.status === 500) {
+      if (res.status === 500 || "error") {
         console.log("Error 500", res.statusText, "Pruebe de vuelta");
         Toastify({
           text: "No se pudo autenticar el usuario",
@@ -38,7 +38,7 @@ logOutBtn.addEventListener("click", (e) => {
           },
         }).showToast();
       }
-      if (res.status === 200) {
+      if (res.status === "succes") {
         Toastify({
           text: "Redireccionando",
           duration: 3000,

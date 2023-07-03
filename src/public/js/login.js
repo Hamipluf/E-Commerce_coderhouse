@@ -46,7 +46,7 @@ formLogin.addEventListener("submit", (e) => {
           },
         }).showToast();
         setTimeout(() => {
-          window.location.assign(`http://localhost:8080/home`);
+          window.location.assign(`https://e-commercecoderhouse-production.up.railway.app/home`);
         }, 1800);
       }
     })
