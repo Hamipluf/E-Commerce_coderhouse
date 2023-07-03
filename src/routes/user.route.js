@@ -37,14 +37,14 @@ router.get(
   "/login/github",
   passport.authenticate("github", {
     scope: ["user:email"],
-    passReqToCallback: true,
     session: false,
-  }),
+  })
+);
+router.get(
+  "/github",
+  passport.authenticate("github", { passReqToCallback: true, session: false }),
   loginUser
 );
-router.get("/github", passport.authenticate("github"), (req, res) => {
-  res.redirect("/profile");
-});
 router.get(
   "/current",
   passport.authenticate("jwtCookies", { session: false }),

@@ -49,6 +49,30 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "Error al loguear usuario" });
   }
 };
+// Loguea un user ya creado con github
+
+export const loginUserGithub = async (req, res) => {
+  const user = req.user;
+  try {
+    if (!user) {
+      return res.status(400).json({
+        status: "error",
+        message: "Usuario no encontrado",
+      });
+    }
+    const token = generateToken(user);
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        signed: true,
+        maxAge: 3600000,
+      })
+      .redirect("https://e-commercecoderhouse-production.up.railway.app/home");
+  } catch (error) {
+    Logger.error("controller loginUser", error);
+    res.status(500).json({ message: "Error al loguear usuario" });
+  }
+};
 // Devuelve el user logueado
 export const getCurrentUser = (req, res) => {
   const { user } = req;

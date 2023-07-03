@@ -10,6 +10,8 @@ import { userModel } from "../persistencia/mongoDB/models/user.model.js";
 
 const userManager = new UserManager();
 const jwtSecret = process.env.SECRET_JWT;
+const client_id = process.env.CLIENT_ID_GITHUB;
+const client_secret = process.env.CLIENT_SECRET_GITHUB;
 
 // Register Local Strategy
 passport.use(
@@ -74,8 +76,8 @@ passport.use(
   "github",
   new GithubStrategy(
     {
-      clientID: process.env.CLIENT_ID_GITHUB,
-      clientSecret: process.env.CLIENT_SECRET_GITHUB,
+      clientID: client_id,
+      clientSecret: client_secret,
       callbackURL:
         "https://e-commercecoderhouse-production.up.railway.app/api/auth/github",
     },
