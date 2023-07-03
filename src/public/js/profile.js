@@ -5,12 +5,15 @@ const currentAge = document.getElementById("current_age");
 const currentEmail = document.getElementById("current_email");
 const userData = document.getElementById("user_data");
 const logout = document.getElementById("btn_logout");
-fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
+fetch(
+  `https://e-commercecoderhouse-production.up.railway.app/api/auth/current`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+)
   .then((response) => response.json())
   .then((data) => {
     const fullName = data.userResponse.fullName.split(" ");
@@ -29,17 +32,21 @@ fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/current`,
   });
 
 logout.addEventListener("click", () => {
-  fetch(`https://e-commercecoderhouse-production.up.railway.app/api/auth/logout`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  fetch(
+    `https://e-commercecoderhouse-production.up.railway.app/api/auth/logout`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
-      if (data.status) {
+      if (data.status === "succes") {
         localStorage.clear();
-        window.location.href = url;
+        window.location.href =
+          "https://e-commercecoderhouse-production.up.railway.app/";
       }
       Toastify({
         text: "Error al salir de la session",
