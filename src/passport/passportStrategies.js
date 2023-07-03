@@ -68,7 +68,34 @@ passport.use(
     }
   )
 );
-
+// GITHUB STRATEGY
+passport.use(
+  "github",
+  new GithubStrategy(
+    {
+      clientID: process.env.CLIENT_ID_GITHUB,
+      clientSecret: process.env.CLIENT_SECRET_GITHUB,
+      callbackURL:
+        "https://e-commercecoderhouse-production.up.railway.app/api/auth/github",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const userDB = await userModel.findOne({ email: profile._json.email });
+      if (!userDB) {
+        const gitUser = {
+          firstName: profile._json.name.split(" ")[0],
+          lastName: profile._json.name.split(" ")[1] || " ",
+          email: profile._json.email || " ",
+          password: " ",
+          isGithub: true,
+        };
+        const newUser = await userModel.create(gitUser);
+        done(null, newUser);
+      } else {
+        done(null, userDB);
+      }
+    }
+  )
+);
 const extactFromCookie = (req) => {
   let token = null;
   if (req && req.signedCookies) token = req.signedCookies["token"];

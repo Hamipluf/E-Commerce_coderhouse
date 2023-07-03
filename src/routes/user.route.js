@@ -10,7 +10,7 @@ import {
   setRole,
   getAllUsers,
   deleteUserInactive,
-  deleteAnUser
+  deleteAnUser,
 } from "../controller/user.controller.js";
 const router = Router();
 
@@ -32,7 +32,19 @@ router.post(
   }),
   loginUser
 );
-
+// LOGIN CON GITHUB
+router.get(
+  "/login/github",
+  passport.authenticate("github", {
+    scope: ["user:email"],
+    passReqToCallback: true,
+    session: false,
+  }),
+  loginUser
+);
+router.get("/github", passport.authenticate("github"), (req, res) => {
+  res.redirect("/profile");
+});
 router.get(
   "/current",
   passport.authenticate("jwtCookies", { session: false }),
@@ -44,6 +56,6 @@ router.get("/logout", logoutUser);
 router.post("/premium/:uid", setRole);
 router.post("/setNewPass/:id", setNewPass);
 router.delete("/", deleteUserInactive);
-router.delete("/deleteUser/:uid", deleteAnUser)
+router.delete("/deleteUser/:uid", deleteAnUser);
 
 export default router;
