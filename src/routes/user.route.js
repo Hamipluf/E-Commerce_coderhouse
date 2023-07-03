@@ -3,6 +3,7 @@ import passport from "passport";
 import {
   loginUser,
   logoutUser,
+  loginUserGithub,
   registerUser,
   getCurrentUser,
   recoveryUser,
@@ -43,7 +44,7 @@ router.get(
 router.get(
   "/github",
   passport.authenticate("github", { passReqToCallback: true, session: false }),
-  loginUser
+  loginUserGithub
 );
 router.get(
   "/current",
