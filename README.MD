@@ -15,6 +15,3 @@ Para inicializar el proyecto en local:
 
 Corre en el servidor http://localhost:8080/
 
---Documentacion en: https://e-commercecoderhouse-production.up.railway.app/apidocs
-
---URL de produccion: https://e-commercecoderhouse-production.up.railway.app/
